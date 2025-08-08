@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Next.js + Tailwind Dashboard (Embedded)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-slate-50">
+  <div class="min-h-screen p-6">
+    <h1 class="text-2xl font-bold mb-4">Demo Dashboard</h1>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white border rounded-xl p-4 shadow">Total Sales: €124,980</div>
+      <div class="bg-white border rounded-xl p-4 shadow">Active Users: 12,431</div>
+      <div class="bg-white border rounded-xl p-4 shadow">Churn: 2.4%</div>
+      <div class="bg-white border rounded-xl p-4 shadow">NPS: 48</div>
+    </div>
+    <div class="bg-white border rounded-xl p-4 shadow mb-6">
+      <canvas id="chart1" height="100"></canvas>
+    </div>
+  </div>
+  <script>
+    const ctx = document.getElementById('chart1').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Revenue (€)',
+          data: [12000, 15000, 14000, 17000, 18000, 21000],
+          borderWidth: 2,
+          fill: false,
+          tension: 0.3
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
